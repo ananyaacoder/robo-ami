@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <title>Roboami</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="navbar">
+    <a href="#" class="logo">Roboami</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="login.html">Login</a>
+      <a href="signup.html">Sign Up</a>
+      <a href="chat.html">Chat</a>
+    </nav>
+    <button id="darkModeToggle" class="dark-mode-toggle">
+      <span class="toggle-icon">🌙</span>
+    </button>
+  </div>
+
+  <main>
+    <div class="hero">
+      <h1>Your Personalized Academic Assistant</h1>
+      <p>Empower your learning journey with roboami</p>
+      <div class="buttons">
+        <a href="signup.html">Get Started</a>
+        <a href="login.html">Login</a>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <a href="trackassignment.html"><h3>Track Assignments</h3></a>
+        <p>add and view upcoming assignments to stay updated.</p>
+      </div>
+      <div class="feature">
+        <a href="analyzemarks.html"><h3>Analyze Marks</h3></a>
+        <p>track your personal growth</p>
+      </div>
+      <div class="feature">
+       <a href="suggestions.html"> <h3>Give Suggestions</h3></a>
+        <p>give us personal feedback</p>
+      </div>
+    </div>
+  </main>
+  <div class="courses-section">
+    <h2>Recommended YouTube Courses</h2>
+    <div class="course-grid">
+      <div class="course-card">
+        <div class="course-thumbnail" style="background-image: url('https://i.ytimg.com/vi/PkZNo7MFNFg/maxresdefault.jpg');"></div>
+        <a href="https://youtu.be/PkZNo7MFNFg?si=ComABjBe7D9FkPi9" target="_blank"><h3>Learn JavaScript - Full Course for Beginners</h3></a>
+        <p>FreeCodeCamp</p>
+      </div>
+      <div class="course-card">
+        <div class="course-thumbnail" style="background-image: url('https://i.ytimg.com/vi/rfscVS0vtbw/maxresdefault.jpg');"></div>
+        <a href="https://youtu.be/rfscVS0vtbw?si=qDZOIcT8YY90LAh8" target="_blank"><h3>Learn Python - Full Course for Beginners</h3><a href=""></a>
+        <p>FreeCodeCamp</p>
+      </div>
+      <div class="course-card">
+        <div class="course-thumbnail" style="background-image: url('https://i.ytimg.com/vi/1Rs2ND1ryYc/maxresdefault.jpg');"></div>
+        <a href="https://youtu.be/ieTHC78giGQ?si=zuJcRpILyTobk8H0" target="_blank"><h3>CSS Full Course - Includes Flexbox and CSS Grid</h3></a>
+        <p>FreeCodeCamp</p>
+      </div>
+      <div class="course-card">
+        <div class="course-thumbnail" style="background-image: url('https://i.ytimg.com/vi/fis26HvvDII/maxresdefault.jpg');"></div>
+        <a href="https://youtu.be/fis26HvvDII?si=Z-wR9SoUeZOpWYRk" target="_blank"><h3>Learn Android App Development </h3></a>
+        <p>mycodeschool</p>
+      </div>
+    </div>
+  </div>
+  <div class="floating-stopwatch" id="floatingStopwatch">
+    <div class="stopwatch-header" id="stopwatchHeader">
+      <h3>Study Timer</h3>
+      <button class="minimize-btn" id="minimizeBtn">−</button>
+    </div>
+    <div class="stopwatch-content" id="stopwatchContent">
+      <div class="stopwatch-display" id="display">00:00:00</div>
+      <div class="stopwatch-controls">
+        <button class="stopwatch-btn start-btn" id="startBtn">Start</button>
+        <button class="stopwatch-btn stop-btn" id="stopBtn" disabled>Stop</button>
+        <button class="stopwatch-btn reset-btn" id="resetBtn">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Team Algo </p>
+  </footer>
+<script src="darkmode.js"></script>
+<script src="stopwatch.js"></script>
+<script>
+  (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="D2--IArXrYXzzBsT9jcTu";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+  </script>
+  
+
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Analyze Marks - Roboami</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+      display: flex;
+    }
+
+    .sidebar {
+      background-color: #2c5282;
+      width: 250px;
+      height: 100vh;
+      color: white;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .sidebar h2 {
+      margin-bottom: 2rem;
+      font-size: 1.5rem;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      margin: 1rem 0;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    .sidebar a:hover {
+      text-decoration: underline;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 2rem;
+      background-color: #ffffff;
+    }
+
+    .main-content h1 {
+      color: #2c5282;
+      margin-bottom: 1.5rem;
+    }
+
+    .marks-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+    }
+
+    .marks-table th,
+    .marks-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .marks-table th {
+      background-color: #2c5282;
+      color: white;
+    }
+
+    .marks-table td {
+      background-color: #f4f6f9;
+    }
+
+    .button {
+      background-color: #2c5282;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 1rem;
+      text-align: center;
+      display: inline-block;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #1a365d;
+    }
+
+    .chart-container {
+      margin-top: 3rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    canvas {
+      width: 80% !important;
+      height: 400px;
+    }
+    * Dark Mode Styles for Analyze Marks Page */
+  .dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+
+  .dark-mode .sidebar {
+    background-color: #1a1a1a;
+    border-right: 1px solid #333;
+  }
+
+  .dark-mode .sidebar h2 {
+    color: #7fa3e6;
+  }
+
+  .dark-mode .sidebar a {
+    color: #b0b0b0;
+  }
+
+  .dark-mode .sidebar a:hover {
+    color: #7fa3e6;
+    text-decoration: none;
+  }
+
+  .dark-mode .sidebar footer {
+    color: #888;
+  }
+
+  .dark-mode .main-content {
+    background-color: #1e1e1e;
+  }
+
+  .dark-mode .main-content h1 {
+    color: #7fa3e6;
+  }
+
+  .dark-mode .marks-table th {
+    background-color: #252525;
+    color: #e0e0e0;
+    border-bottom: 1px solid #444;
+  }
+
+  .dark-mode .marks-table td {
+    background-color: #2d2d2d;
+    border-bottom: 1px solid #444;
+    color: #e0e0e0;
+  }
+
+  .dark-mode .marks-table tr:hover td {
+    background-color: #3a3a3a;
+  }
+
+  .dark-mode .button {
+    background-color: #3a5a8a;
+    color: white;
+  }
+
+  .dark-mode .button:hover {
+    background-color: #2c4a7a;
+  }
+
+  /* Chart Styling for Dark Mode */
+  .dark-mode .chart-container {
+    background-color: #252525;
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  .dark-mode #marksChart {
+    background-color: #252525;
+    padding: 15px;
+    border-radius: 4px;
+  }
+
+  /* Update Chart.js colors in dark mode */
+  .dark-mode .chartjs-render-monitor {
+    color: #e0e0e0 !important;
+  }
+
+  .dark-mode .chartjs-grid line {
+    stroke: #444 !important;
+  }
+
+  .dark-mode .chartjs-axis line,
+  .dark-mode .chartjs-axis path {
+    stroke: #666 !important;
+  }
+
+  .dark-mode .chartjs-axis text {
+    fill: #b0b0b0 !important;
+  }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>Roboami Dashboard</h2>
+    <nav>
+      <a href="dashboard.html">Home</a>
+      <a href="assignments.html">Assignments</a>
+      <a href="marks.html">Marks</a>
+      <a href="suggestions.html">Suggestions</a>
+      <a href="settings.html">Settings</a>
+    </nav>
+    <footer>
+      <p>&copy; 2025 Roboami</p>
+    </footer>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1>Analyze Your Marks</h1>
+
+    <!-- Marks Table -->
+    <table class="marks-table">
+      <thead>
+        <tr>
+          <th>Subject</th>
+          <th>Grade</th>
+          <th>Percentage</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mathematics</td>
+          <td>A</td>
+          <td>90%</td>
+          <td>
+            <a href="https://abes365-my.sharepoint.com/:x:/r/personal/ananya_24b15310224_abes_ac_in/_layouts/15/doc2.aspx?sourcedoc=%7BC02FA336-5FBC-4547-8476-FDA564E34825%7D&file=Book.xlsx&action=editNew&mobileredirect=true&wdOrigin=SEARCHENGINE.GOOGLE%2CAPPHOME-WEB.BANNER.NEWBLANK&wdPreviousSession=a97eb3e1-67b0-4a06-837e-465cce3fd0cc&wdPreviousSessionSrc=AppHomeWeb&ct=1746281846370" class="button">View Details</a>
+          </td>
+        </tr>
+        <tr>
+          <td>Science</td>
+          <td>B+</td>
+          <td>85%</td>
+          <td>
+            <a href="https://abes365-my.sharepoint.com/:x:/r/personal/ananya_24b15310224_abes_ac_in/_layouts/15/doc2.aspx?sourcedoc=%7BC02FA336-5FBC-4547-8476-FDA564E34825%7D&file=Book.xlsx&action=editNew&mobileredirect=true&wdOrigin=SEARCHENGINE.GOOGLE%2CAPPHOME-WEB.BANNER.NEWBLANK&wdPreviousSession=a97eb3e1-67b0-4a06-837e-465cce3fd0cc&wdPreviousSessionSrc=AppHomeWeb&ct=1746281846370" class="button">View Details</a>
+          </td>
+        </tr>
+        <tr>
+          <td>English</td>
+          <td>A-</td>
+          <td>88%</td>
+          <td>
+            <a href="https://abes365-my.sharepoint.com/:x:/r/personal/ananya_24b15310224_abes_ac_in/_layouts/15/doc2.aspx?sourcedoc=%7BC02FA336-5FBC-4547-8476-FDA564E34825%7D&file=Book.xlsx&action=editNew&mobileredirect=true&wdOrigin=SEARCHENGINE.GOOGLE%2CAPPHOME-WEB.BANNER.NEWBLANK&wdPreviousSession=a97eb3e1-67b0-4a06-837e-465cce3fd0cc&wdPreviousSessionSrc=AppHomeWeb&ct=1746281846370" class="button">View Details</a>
+          </td>
+        </tr>
+        <tr>
+          <td>History</td>
+          <td>B</td>
+          <td>80%</td>
+          <td>
+            <a href="https://abes365-my.sharepoint.com/:x:/r/personal/ananya_24b15310224_abes_ac_in/_layouts/15/doc2.aspx?sourcedoc=%7BC02FA336-5FBC-4547-8476-FDA564E34825%7D&file=Book.xlsx&action=editNew&mobileredirect=true&wdOrigin=SEARCHENGINE.GOOGLE%2CAPPHOME-WEB.BANNER.NEWBLANK&wdPreviousSession=a97eb3e1-67b0-4a06-837e-465cce3fd0cc&wdPreviousSessionSrc=AppHomeWeb&ct=1746281846370" class="button">View Details</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Marks Analysis Chart -->
+    <div class="chart-container">
+      <canvas id="marksChart"></canvas>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Data for the chart (example grades)
+    const ctx = document.getElementById('marksChart').getContext('2d');
+    const marksChart = new Chart(ctx, {
+      type: 'bar', // Bar chart
+      data: {
+        labels: ['Math', 'Science', 'English', 'History'], // Subject names
+        datasets: [{
+          label: 'Marks Percentage',
+          data: [90, 85, 88, 80], // Example percentage data
+          backgroundColor: '#2c5282',
+          borderColor: '#1a365d',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100
+          }
+        }
+      }
+    });
+  </script>
+  <script src="darkmode.js"></script>
+</body>
+</html>
